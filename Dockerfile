@@ -23,3 +23,8 @@ RUN pip install -r requirements.txt
 
 # Copy the rest of the code. 
 COPY . /code/
+RUN source /env/Scripts/activate
+RUN python manage.py migrate
+
+# Create the super user (follow prompts)
+RUN python manage.py runserver
